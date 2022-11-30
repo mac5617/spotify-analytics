@@ -1,0 +1,19 @@
+### Single Albumn
+GET https://umd-spotify-backend.herokuapp.com/album/single?id=4aawyAB9vmqN3uQ7FjRGTy HTTP/1.1
+### Multiple Albumns
+GET https://umd-spotify-backend.herokuapp.com/album/multi?id_string=39cDMNnxwjrKJE1dyt47jh,1aBDI4nH6OfAkNyUX08O2V HTTP/1.1
+### 
+GET https://umd-spotify-backend.herokuapp.com/album/tracks?limit_int=50&market_string=ES&offset_int=0 HTTP/1.1
+### Get users saved Albums
+GET https://umd-spotify-backend.herokuapp.com/album/get_user?limit_int=50&market_string=ES&offset_int=0&access_token=
+###  Save Album
+PUT https://umd-spotify-backend.herokuapp.com/album/save_album?ids=382ObEPsp2rxGrnsizN5TX,1A2GTWGtFfWp7KSQTwWOyo,2noRn2Aes5aoNVsU6iWThc HTTP/1.1
+
+{data:["382ObEPsp2rxGrnsizN5TX","1A2GTWGtFfWp7KSQTwWOyo","2noRn2Aes5aoNVsU6iWThc"]}
+### Remove album
+DELETE url HTTP/1.1
+###
+GET https://umd-spotify-backend.herokuapp.com/album/contains?album_strings=382ObEPsp2rxGrnsizN5TX,1A2GTWGtFfWp7KSQTwWOyo,2noRn2Aes5aoNVsU6iWThc HTTP/1.1
+### New Releases
+GET https://umd-spotify-backend.herokuapp.com/album/release?limit_int=50&country_string=ES&offset_int=0&access_token= HTTP/1.1
+
