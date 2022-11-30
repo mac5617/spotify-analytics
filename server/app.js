@@ -6,7 +6,7 @@ const session = require("express-session");
 const bodyParser = require("body-parser");
 const logger = require("morgan");
 const cors = require("cors");
-const util_request = require("./utilities/requests/refresh_auth.js.js");
+const util_request = require("./utilities/requests/refresh_auth.js");
 // mod
 const mod_authorlistRouter = require("./routes/mod/artistList");
 const mod_genreslistRouter = require("./routes/mod/c_genreslist");
