@@ -69,9 +69,9 @@ app.use(
     saveUninitialized: false,
     resave: false,
     store: session_store,
-    cookie:{
-      httpOnly:false,
-      secure:false
+    cookie: {
+      httpOnly: false,
+      secure: false
     }
   })
 );
@@ -93,31 +93,31 @@ app.use((req, res, next) => {
   next();
 });
 //mod
-app.use("/mod/authorlist", mod_authorlistRouter);
-app.use("/mod/genreslist", mod_genreslistRouter);
-app.use("/mod/tracklist", mod_tracklistRouter);
+app.use("/api/mod/authorlist", mod_authorlistRouter);
+app.use("/api/mod/genreslist", mod_genreslistRouter);
+app.use("/api/mod/tracklist", mod_tracklistRouter);
 
 // Homepage
-app.use("/", indexRouter);
-app.use("/test", testRouter);
+app.use("/api", indexRouter);
+app.use("/api/test", testRouter);
 // Login Stuff
-app.use("/login", loginRouter);
-app.use("/callback", callbackRouter);
+app.use("/api/login", loginRouter);
+app.use("/api/callback", callbackRouter);
 // Albums
-app.use("/album/single", album_singleRouter);
-app.use("/album/multi", album_multiRouter);
+app.use("/api/album/single", album_singleRouter);
+app.use("/api/album/multi", album_multiRouter);
 //app.use("/album/remove", album_removeRouter); Not finished Yet
-app.use("/album/add", album_addRouter);
-app.use("/album/check", album_checkRouter);
-app.use("/album/tracks", album_tracksRouter);
-app.use("/album/new", album_newRouter);
-app.use("/album/me", album_meRouter);
+app.use("/api/album/add", album_addRouter);
+app.use("/api/album/check", album_checkRouter);
+app.use("/api/album/tracks", album_tracksRouter);
+app.use("/api/album/new", album_newRouter);
+app.use("/api/album/me", album_meRouter);
 // Artists
-app.use("/artists/single", artists_singleRouter);
-app.use("/artists/multi", artists_multiRouter);
-app.use("/artists/albums", artists_albumsRouter);
-app.use("/artists/tracks", artists_tracksRouter);
-app.use("/artists/related", artists_relatedRouter);
+app.use("/api/artists/single", artists_singleRouter);
+app.use("/api/artists/multi", artists_multiRouter);
+app.use("/api/artists/albums", artists_albumsRouter);
+app.use("/api/artists/tracks", artists_tracksRouter);
+app.use("/api/artists/related", artists_relatedRouter);
 
 // Track list returns TOP 50: Song_Name, Artist, Popularity
 app.use("/tracklist", tracklistRouter);
