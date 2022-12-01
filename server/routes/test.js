@@ -2,7 +2,7 @@ var express = require("express");
 var router = express.Router();
 
 router.get("/", function (req, res, next) {
-  console.log(req.session);
+  //console.log(req.access_token);
   let sess_time = req.session.state.time_stamp
   let sess_exp_time = req.session.state.time_stamp + 3600
   //res.status(200).json({ msg: `successfully Hit endpoint ${req.state}` })
