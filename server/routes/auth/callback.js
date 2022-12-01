@@ -29,10 +29,10 @@ router.get("/", (req, res) => {
       if (response.status === 200) {
         const session_cookie = response.data;
         const event = new Date();
-        session_cookie.exptime = Date.now() + 3600;
+        session_cookie.exp_time = Date.now() + 3600;
         session_cookie.time_stamp = event.toLocaleString('en-GB', { timeZone: 'EST' });
         req.session.state = session_cookie;
-        console.log(req.session);
+        //console.log(req.session);
         //res.send(`<pre>${JSON.stringify(response.data, null, 2)}</pre>`);
         //res.send(response);
         res.redirect(

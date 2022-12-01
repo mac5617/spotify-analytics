@@ -1,45 +1,16 @@
-import { useState } from 'react';
+
 
 const App = () => {
-  // eslint-disable-next-line
-  const [err, setErr] = useState('');
-
-  const handleClick = async () => {
-
-    try {
-      const response = await fetch('/album/single?id=4aawyAB9vmqN3uQ7FjRGTy', {
-        method: 'GET',
-        headers: {
-          Accept: 'application/json',
-        },
-      });
-
-      if (!response.ok) {
-        throw new Error(`Error! status: ${response.status}`);
-      }
-
-      const result = await response.json();
-
-      console.log(result);
-      //console.log('result is: ', JSON.stringify(result, null, 4));
-    } catch (err) {
-      setErr(err.message);
-    } finally {
-
-    }
-  };
-
 
   return (
     <div>
-      <button onClick={handleClick}>Fetch data</button>
       <div className="nav">
         <div className="l_nav">
           <a href="/">Spotify Analytics</a>
           <p></p>
         </div>
         <div className="r_nav">
-          <a href="https://umd-spotify-backend.herokuapp.com/Login">Login</a>
+          <a href="http://localhost:9000/api/login">Login</a>
           <a href="/umd_stats">UMD Stats</a>
           <a href="/about_us">About us</a>
         </div>

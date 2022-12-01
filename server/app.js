@@ -71,23 +71,26 @@ app.use(
     store: session_store,
     cookie: {
       httpOnly: false,
-      secure: false
-    }
+      secure: false,
+    },
   })
 );
 
 app.use((req, res, next) => {
   if (req.session.state) {
     const { access_token, refresh_token, exp_time } = req.session.state;
-    if (Date.now() > exp_time) {
-      console.log("Time to refresh the token");
-      session_cookie = util_request.refreshToken(refresh_token);
-      session_cookie.exptime = Date.now() + 3600;
-      req.session.state = session_cookie;
-      req.access_token = access_token;
-    } else {
-      req.access_token = access_token;
+    console.log('AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA')
+    console.log(req.session.state)
+    console.log('AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA')
+    console.log(refresh_token)
+    console.log('AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA')
+    try{
+      console.log('This is the refresh update')
+      console.log(util_request.refreshToken(refresh_token))
+    }catch(err){
+      console.log(err)
     }
+    console.log('Its broken')
   }
 
   next();

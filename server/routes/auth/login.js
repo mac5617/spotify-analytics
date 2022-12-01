@@ -23,9 +23,6 @@ router.get("/", (req, res) => {
   const STATE = generateRandomString(16);
   const SCOPE =
     "user-read-private user-read-email user-top-read user-follow-read user-library-read playlist-modify-public";
-  req.user_state = STATE;
-  res.cookie(STATEKEY, STATE);
-  req.session.state = { STATEKEY: "" };
 
   const queryParams = querystring.stringify({
     response_type: "code",
