@@ -5,6 +5,7 @@ const cookieParser = require("cookie-parser");
 const session = require("express-session");
 const bodyParser = require("body-parser");
 const logger = require("morgan");
+const axios = require("axios");
 const cors = require("cors");
 const util_request = require("./utilities/requests/refresh_auth.js");
 // mod
@@ -14,6 +15,7 @@ const mod_tracklistRouter = require("./routes/mod/c_tracklist");
 // Auth Routes
 const loginRouter = require("./routes/auth/login");
 const callbackRouter = require("./routes/auth/callback");
+const refreshRouter = require("./routes/auth/refresh");
 // HomePage
 const indexRouter = require("./routes/auxil/index");
 const testRouter = require("./routes/test");
@@ -75,37 +77,28 @@ app.use(
     },
   })
 );
+// Login Stuff
+app.use("/api/login", loginRouter);
+app.use("/api/callback", callbackRouter);
+app.use("/api/:id", refreshRouter);
 
-app.use((req, res, next) => {
-  if (req.session.state) {
-    const { access_token, refresh_token, exp_time } = req.session.state;
-    console.log('AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA')
-    console.log(req.session.state)
-    console.log('AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA')
-    console.log(refresh_token)
-    console.log('AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA')
-    try{
-      console.log('This is the refresh update')
-      console.log(util_request.refreshToken(refresh_token))
-    }catch(err){
-      console.log(err)
-    }
-    console.log('Its broken')
-  }
 
-  next();
-});
+// Homepage
+app.use("/api", indexRouter);
+console.log('Reaching test')
+app.use("/api/test", testRouter);
+
+
+
+
+
 //mod
 app.use("/api/mod/authorlist", mod_authorlistRouter);
 app.use("/api/mod/genreslist", mod_genreslistRouter);
 app.use("/api/mod/tracklist", mod_tracklistRouter);
 
-// Homepage
-app.use("/api", indexRouter);
-app.use("/api/test", testRouter);
-// Login Stuff
-app.use("/api/login", loginRouter);
-app.use("/api/callback", callbackRouter);
+
+
 // Albums
 app.use("/api/album/single", album_singleRouter);
 app.use("/api/album/multi", album_multiRouter);
