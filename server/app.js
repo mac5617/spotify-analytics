@@ -49,6 +49,10 @@ const get_albumSingle = require("./routes/base/albums/get_singleAlbum");
 const app = express();
 const session_store = new session.MemoryStore();
 // view engine setup
+app.use(express.static(path.join(__dirname, 'build')));
+app.get('/*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'build', 'index.html'));
+});
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "hbs");
 app.use(

@@ -1,0 +1,19 @@
+{
+  "name": "spotify-analytics",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "cd server && npm start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mac5617/spotify-analytics.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mac5617/spotify-analytics/issues"
+  },
+  "homepage": "https://github.com/mac5617/spotify-analytics#readme"
+}

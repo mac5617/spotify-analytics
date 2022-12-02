@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function Navbar() {
+export default function PreLogNav() {
   return (
     <div className="r_nav">
       <a href="http://localhost:9000/api/login">Login</a>

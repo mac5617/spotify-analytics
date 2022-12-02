@@ -1,5 +1,5 @@
 import './App.css';
-import navbar from './components/general/nav_bar'
+import PreLogNav from './components/general/navbar/PreLogNav'
 const App = () => {
 
   return (
@@ -9,7 +9,7 @@ const App = () => {
           <a href="/">Spotify Analytics</a>
           <p></p>
         </div>
-        <navbar />
+        <PreLogNav />
 
       </div>
       <div className="quote">
@@ -28,23 +28,20 @@ const App = () => {
         </ul>
         <div className="Artist-List">
           <div>
-          <img src="https://i.scdn.co/image/ab6761610000f178fd30ebd7e80dad6b2383aab0" alt=""/>
-          <img src="https://i.scdn.co/image/ab6761610000f178b7097d4c2bc9751c14695351" alt=""/>
-          <img src="https://i.scdn.co/image/080090a26f6df71cae1925b8b9f76a236b524b18" alt=""/>
+            <img src="https://i.scdn.co/image/ab6761610000f178fd30ebd7e80dad6b2383aab0" alt="" />
+            <img src="https://i.scdn.co/image/ab6761610000f178b7097d4c2bc9751c14695351" alt="" />
+            <img src="https://i.scdn.co/image/080090a26f6df71cae1925b8b9f76a236b524b18" alt="" />
           </div>
           <div>
-          <img src="https://i.scdn.co/image/ab6761610000f178fd30ebd7e80dad6b2383aab0" alt=""/>
-          <img src="https://i.scdn.co/image/ab6761610000f178b7097d4c2bc9751c14695351" alt=""/>
-          <img src="https://i.scdn.co/image/080090a26f6df71cae1925b8b9f76a236b524b18" alt=""/>
+            <img src="https://i.scdn.co/image/ab6761610000f178fd30ebd7e80dad6b2383aab0" alt="" />
+            <img src="https://i.scdn.co/image/ab6761610000f178b7097d4c2bc9751c14695351" alt="" />
+            <img src="https://i.scdn.co/image/080090a26f6df71cae1925b8b9f76a236b524b18" alt="" />
           </div>
           <div>
-          <img src="https://i.scdn.co/image/ab6761610000f178fd30ebd7e80dad6b2383aab0" alt=""/>
-          <img src="https://i.scdn.co/image/ab6761610000f178b7097d4c2bc9751c14695351" alt=""/>
-          <img src="https://i.scdn.co/image/080090a26f6df71cae1925b8b9f76a236b524b18" alt=""/>
+            <img src="https://i.scdn.co/image/ab6761610000f178fd30ebd7e80dad6b2383aab0" alt="" />
+            <img src="https://i.scdn.co/image/ab6761610000f178b7097d4c2bc9751c14695351" alt="" />
+            <img src="https://i.scdn.co/image/080090a26f6df71cae1925b8b9f76a236b524b18" alt="" />
           </div>
-        </div>
-        <div className="storing_pictures">
-
         </div>
       </div>
     </div>
