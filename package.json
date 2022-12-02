@@ -7,6 +7,13 @@
     "heroku-postbuild": "cd client/ && npm install && npm run build",
     "start-server": "cd server/ && npm start"
   },
+  "engines": {
+    "node": "16.15.0"
+  },
+  "cacheDirectories": [
+    "server/node_modules",
+    "client/node_modules"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/mac5617/spotify-analytics.git"
