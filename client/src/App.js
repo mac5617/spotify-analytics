@@ -1,5 +1,5 @@
-
-
+import './App.css';
+import navbar from './components/general/nav_bar'
 const App = () => {
 
   return (
@@ -9,11 +9,8 @@ const App = () => {
           <a href="/">Spotify Analytics</a>
           <p></p>
         </div>
-        <div className="r_nav">
-          <a href="http://localhost:9000/api/login">Login</a>
-          <a href="/umd_stats">UMD Stats</a>
-          <a href="/about_us">About us</a>
-        </div>
+        <navbar />
+
       </div>
       <div className="quote">
         <p>
@@ -29,6 +26,23 @@ const App = () => {
           <li><span className="effects_1" id="artists">120</span> Artists</li>
           <li><span className="effects_1" id="genres">32</span> Genres</li>
         </ul>
+        <div className="Artist-List">
+          <div>
+          <img src="https://i.scdn.co/image/ab6761610000f178fd30ebd7e80dad6b2383aab0" alt=""/>
+          <img src="https://i.scdn.co/image/ab6761610000f178b7097d4c2bc9751c14695351" alt=""/>
+          <img src="https://i.scdn.co/image/080090a26f6df71cae1925b8b9f76a236b524b18" alt=""/>
+          </div>
+          <div>
+          <img src="https://i.scdn.co/image/ab6761610000f178fd30ebd7e80dad6b2383aab0" alt=""/>
+          <img src="https://i.scdn.co/image/ab6761610000f178b7097d4c2bc9751c14695351" alt=""/>
+          <img src="https://i.scdn.co/image/080090a26f6df71cae1925b8b9f76a236b524b18" alt=""/>
+          </div>
+          <div>
+          <img src="https://i.scdn.co/image/ab6761610000f178fd30ebd7e80dad6b2383aab0" alt=""/>
+          <img src="https://i.scdn.co/image/ab6761610000f178b7097d4c2bc9751c14695351" alt=""/>
+          <img src="https://i.scdn.co/image/080090a26f6df71cae1925b8b9f76a236b524b18" alt=""/>
+          </div>
+        </div>
         <div className="storing_pictures">
 
         </div>
