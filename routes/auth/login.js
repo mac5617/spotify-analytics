@@ -15,7 +15,7 @@ function generateRandomString(length) {
 
 const CLIENT_ID = "530e835e3d6b45b5b6e339554a506d43";
 
-const REDIRECT_URI = 'http://localhost:9000/api/callback'
+const REDIRECT_URI = 'http://localhost:5000/api/callback'
 //const REDIRECT_URI = "https://umd-spotify-backend.herokuapp.com/api/callback";
 const STATEKEY = "spotify_auth_state";
 

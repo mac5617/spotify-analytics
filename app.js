@@ -1,3 +1,6 @@
+/*
+ Import all of the server related packages
+*/
 const createError = require("http-errors");
 const express = require("express");
 const path = require("path");
@@ -7,7 +10,9 @@ const bodyParser = require("body-parser");
 const logger = require("morgan");
 const axios = require("axios");
 const cors = require("cors");
-const util_request = require("./utilities/requests/refresh_auth.js");
+/*
+ Router related Imports
+*/
 // mod
 const mod_authorlistRouter = require("./routes/mod/artistList");
 const mod_genreslistRouter = require("./routes/mod/c_genreslist");
@@ -35,8 +40,7 @@ const artists_multiRouter = require("./routes/base/artists/get_multiArtist");
 const artists_albumsRouter = require("./routes/base/artists/get_artistAlbums");
 const artists_tracksRouter = require("./routes/base/artists/get_artistTracks");
 const artists_relatedRouter = require("./routes/base/artists/get_artistRelated");
-
-//
+// old Routes - Delete and move to mod
 const tracklistRouter = require("./routes/c_tracklist");
 const genreslistRouter = require("./routes/c_genreslist");
 const single_artistRouter = require("./routes/single_artist");
@@ -49,7 +53,7 @@ const get_albumSingle = require("./routes/base/albums/get_singleAlbum");
 const app = express();
 const session_store = new session.MemoryStore();
 // view engine setup
-app.use(express.static(path.join(__dirname, '../client/build/')));
+app.use(express.static(path.join(__dirname, 'client/build')));
 
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "hbs");
@@ -64,7 +68,6 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-app.use(express.static(path.join(__dirname, "public")));
 
 // After a state is present
 
@@ -80,28 +83,18 @@ app.use(
     },
   })
 );
+console.log(session_store)
 // Login Stuff
 app.use("/api/login", loginRouter);
 app.use("/api/callback", callbackRouter);
 app.use(refreshRouter);
-
-
 // Homepage
 app.use("/api", indexRouter);
-console.log('Reaching test')
 app.use("/api/test", testRouter);
-
-
-
-
-
 //mod
 app.use("/api/mod/authorlist", mod_authorlistRouter);
 app.use("/api/mod/genreslist", mod_genreslistRouter);
 app.use("/api/mod/tracklist", mod_tracklistRouter);
-
-
-
 // Albums
 app.use("/api/album/single", album_singleRouter);
 app.use("/api/album/multi", album_multiRouter);
@@ -117,10 +110,9 @@ app.use("/api/artists/multi", artists_multiRouter);
 app.use("/api/artists/albums", artists_albumsRouter);
 app.use("/api/artists/tracks", artists_tracksRouter);
 app.use("/api/artists/related", artists_relatedRouter);
-
 // Track list returns TOP 50: Song_Name, Artist, Popularity
 app.use("/tracklist", tracklistRouter);
-//
+// Old enpoints to move to mod 
 app.use("/genreslist", genreslistRouter);
 app.use("/get_authorlist", authoridlistRouter);
 app.use("/single_author", single_artistRouter);
@@ -129,10 +121,13 @@ app.use("/episode", episodelistRouter);
 app.use("/artist_albums", artist_albumlistRouters);
 app.use("/album/single", get_albumSingle);
 
-
-app.get('/*', (req, res) => {
-  res.sendFile(path.join(__dirname, '../client/build/', 'index.html'));
+// ---------------- ADD THIS ----------------
+// The "catchall" handler: for any request that doesn't
+// match one above, send back React's index.html file.
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname+'/client/build/index.html'));
 });
+// --------------------------------
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
   next(createError(404));
