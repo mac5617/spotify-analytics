@@ -33,6 +33,17 @@ body{
   font-size: 20px;
 }
 .Artist-List img {
-
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
   border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  padding: 20px;
+}
+.Artist-List{
+  display: flex;
+}
+.flex_container{
+  display: flex;
+  justify-content: space-around;
 }
