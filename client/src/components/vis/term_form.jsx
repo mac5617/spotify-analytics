@@ -93,7 +93,7 @@ export default function DataForm() {
         </fieldset>
       </Form>
       <div className="Data">
-        {fetch_data.map((res) => (
+        {fetch_data?.map((res) => (
           <Track
             song={res.song}
             artist={res.artist}
