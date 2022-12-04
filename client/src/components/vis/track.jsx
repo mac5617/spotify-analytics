@@ -13,9 +13,9 @@ export default class track extends Component {
   render() {
     return (
       <div>
-        <h4>Song: {this.state.song}</h4>
-        <h4>Artist: {this.state.artist}</h4>
-        <h4>Popularity: {this.state.popularity}</h4>
+        <span>Song: {this.state.song}</span>
+        <span>Artist: {this.state.artist}</span>
+        <span>Popularity: {this.state.popularity}</span>
       </div>
     );
   }

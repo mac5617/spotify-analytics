@@ -5,6 +5,7 @@ import Track from "./track";
 export default function DataForm() {
   const [data_val, set_dataVal] = useState();
   const [fetch_data, set_fetchData] = useState();
+  const [data_load, set_dataLoad] = useState();
   useEffect(() => {
     if (!data_val) {
       set_dataVal("long_term");
