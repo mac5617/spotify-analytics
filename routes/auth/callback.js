@@ -36,7 +36,7 @@ router.get("/", (req, res) => {
         //res.send(`<pre>${JSON.stringify(response.data, null, 2)}</pre>`);
         //res.send(response);
         res.redirect(
-        `http://localhost:3000/`
+          `https://umd-spotify-analytics.herokuapp.com/`
         );
         //res.status(200).send('Successfully logged in')
       } else {
