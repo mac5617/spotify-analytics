@@ -1,20 +1,9 @@
 import "../style/root.css";
+import PreNav from "../components/general/pre_nav.jsx";
 export default function Root() {
   return (
     <div>
-      <div className="nav">
-        <div className="l_nav">
-          <a href="/">Spotify Analytics</a>
-          <p></p>
-        </div>
-        <div className="r_nav">
-          <a href="https://umd-spotify-analytics.herokuapp.com/api/login">
-            Login
-          </a>
-          <a href="/umd_stats">UMD Stats</a>
-          <a href="/about_us">About us</a>
-        </div>
-      </div>
+      <PreNav />
       <div className="quote">
         <p>
           “University of Maryland’s Prime database <br />

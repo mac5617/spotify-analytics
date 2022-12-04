@@ -1,6 +1,7 @@
 import "../../style/genreCount.css";
 import React from "react";
-import TermForm from "../../components/term_form";
+import TermForm from "../../components/vis/term_form";
+import PostNav from "../../components/general/post_nav";
 // import { useForm } from "react-hook-form";
 export default function GenreCount() {
   // check the buttton
@@ -8,11 +9,12 @@ export default function GenreCount() {
   return (
     <div>
       <div className="full_container">
+        <PostNav />
+        <TermForm />
         <div className="user_request"></div>
         <div>
           <ul id="data"></ul>
         </div>
-        <TermForm />
       </div>
     </div>
   );

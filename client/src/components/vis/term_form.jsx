@@ -4,7 +4,6 @@ import { useState, useEffect } from "react";
 export default function DataForm() {
   const [data_val, set_dataVal] = useState();
 
-  // functions that inserts the data on to the page
   useEffect(() => {
     if (!data_val) {
       set_dataVal("long_term");
@@ -18,7 +17,6 @@ export default function DataForm() {
     <div>
       <Form id="type_request">
         <fieldset>
-          <legend>Select a type and submit to pull songs</legend>
           <input
             title="All Time top songs"
             type="radio"

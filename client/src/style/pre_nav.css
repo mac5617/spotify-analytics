@@ -1,0 +1,30 @@
+ul {
+  padding: 0;
+  margin: 0;
+}
+.cotainer {
+  display: flex;
+  justify-content: space-between;
+}
+li {
+  color: white;
+  list-style-type: none;
+  font-size: 20px;
+}
+
+.lDiv {
+  display: flex;
+  align-items: center;
+  padding-left: 15px;
+}
+#logo {
+  width: fit-content;
+  height: 60px;
+  padding-right: 10px;
+}
+.rDiv {
+  display: flex;
+}
+.rDiv > li {
+  padding: 10px;
+}
