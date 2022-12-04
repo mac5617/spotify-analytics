@@ -6,7 +6,7 @@ export default class track extends Component {
     this.state = {
       song: props.song,
       artist: props.artist,
-      popularity: pops.popularity,
+      popularity: props.popularity,
     };
   }
 
