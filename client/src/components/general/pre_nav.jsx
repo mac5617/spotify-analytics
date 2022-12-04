@@ -13,7 +13,7 @@ export default function PreNav() {
         </div>
         <div className="rDiv">
           <li>
-            <a href="https://umd-spotify-analytics.herokuapp.com/login">
+            <a href="https://umd-spotify-analytics.herokuapp.com/api/login">
               Sign-in
             </a>
           </li>

@@ -6,10 +6,13 @@ export default function DataForm() {
   useEffect(() => {
     if (!data_val) {
       set_dataVal("long_term");
-      fetch(`/api/mod/tracklist?term=${data_val}`).then((response) => {
+      fetch(`/api/mod/tracklist?term=${"long_term"}`).then((response) => {
         console.log(response.json());
       });
     } else {
+      fetch(`/api/mod/tracklist?term=${data_val}`).then((response) => {
+        console.log(response.json());
+      });
     }
     return () => {
       console.log("dataReturn");
