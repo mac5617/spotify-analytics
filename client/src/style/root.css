@@ -1,33 +1,33 @@
-body{
-  background-color: #2E3034;
+body {
+  background-color: #2e3034;
 }
-.quote{
-  color: #6FA3A7;
+.quote {
+  color: #6fa3a7;
 }
-.nav{
+.nav {
   display: flex;
   justify-content: space-between;
   font-size: 18px;
   margin-top: 5px;
 }
 
-.nav a{
+.nav a {
   text-decoration: none;
   color: white;
   padding-top: 100px;
 }
-.l_nav a{
-  padding-left:12px;
+.l_nav a {
+  padding-left: 12px;
 }
-.r_nav a{
-  padding-left:15px;
-  padding-right:15px;
+.r_nav a {
+  padding-left: 15px;
+  padding-right: 15px;
 }
-.quote{
+.quote {
   padding-left: 20px;
   font-size: 30px;
 }
-.storing_information{
+.storing_information {
   list-style: none;
   color: white;
   font-size: 20px;
@@ -40,10 +40,10 @@ body{
   height: 40px;
   padding: 20px;
 }
-.Artist-List{
+.Artist-List {
   display: flex;
 }
-.flex_container{
+.flex_container {
   display: flex;
   justify-content: space-around;
 }

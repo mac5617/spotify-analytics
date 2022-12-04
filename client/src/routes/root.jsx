@@ -1,6 +1,5 @@
-import "./App.css";
-import PreLogNav from "./components/general/navbar/PreLogNav";
-const App = () => {
+import "../style/root.css";
+export default function Root() {
   return (
     <div>
       <div className="nav">
@@ -8,7 +7,13 @@ const App = () => {
           <a href="/">Spotify Analytics</a>
           <p></p>
         </div>
-        <PreLogNav />
+        <div className="r_nav">
+          <a href="https://umd-spotify-analytics.herokuapp.com/api/login">
+            Login
+          </a>
+          <a href="/umd_stats">UMD Stats</a>
+          <a href="/about_us">About us</a>
+        </div>
       </div>
       <div className="quote">
         <p>
@@ -122,6 +127,4 @@ const App = () => {
       </div>
     </div>
   );
-};
-
-export default App;
+}
