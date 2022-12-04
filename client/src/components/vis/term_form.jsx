@@ -3,12 +3,19 @@ import { Form } from "react-router-dom";
 import { useState, useEffect } from "react";
 export default function DataForm() {
   const [data_val, set_dataVal] = useState();
+  const [fetch_data, set_fetchData] = useState();
   useEffect(() => {
     if (!data_val) {
       set_dataVal("long_term");
-      fetch(`/api/mod/tracklist?term=${"long_term"}`).then((response) => {
-        console.log(response.json());
-      });
+      fetch(`/api/mod/tracklist?term=${"long_term"}`)
+        .then((response) => {
+          if (response.ok) {
+            return response.json();
+          }
+        })
+        .then((data) => {
+          set_fetchData(data);
+        });
     } else {
       fetch(`/api/mod/tracklist?term=${data_val}`).then((response) => {
         console.log(response.json());
@@ -17,7 +24,7 @@ export default function DataForm() {
     return () => {
       console.log("dataReturn");
     };
-  }, [data_val]);
+  }, []);
   return (
     <div>
       <Form id="type_request">
@@ -78,6 +85,9 @@ export default function DataForm() {
           </label>
         </fieldset>
       </Form>
+      <div className="Data">
+        <pre>{`${JSON.stringify(fetch_data, null, 2)}`}</pre>
+      </div>
     </div>
   );
 }
