@@ -12,10 +12,13 @@ export default class track extends Component {
 
   render() {
     return (
-      <div>
+      <div className="Track">
         <span>Song: {this.state.song}</span>
+        <br />
         <span>Artist: {this.state.artist}</span>
+        <br />
         <span>Popularity: {this.state.popularity}</span>
+        <br />
       </div>
     );
   }
