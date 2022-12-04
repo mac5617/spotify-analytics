@@ -95,8 +95,8 @@ export default function DataForm() {
       <div className="Data">
         {fetch_data?.map((res) => (
           <Track
-            song={res.song}
-            artist={res.artist}
+            song={res.song_name}
+            artist={res.artists.toString()}
             popularity={res.popularity}
           />
         ))}
