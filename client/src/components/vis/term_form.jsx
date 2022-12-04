@@ -1,6 +1,7 @@
 import React from "react";
 import { Form } from "react-router-dom";
 import { useState, useEffect } from "react";
+import Track from "./track";
 export default function DataForm() {
   const [data_val, set_dataVal] = useState();
   const [fetch_data, set_fetchData] = useState();
@@ -17,14 +18,20 @@ export default function DataForm() {
           set_fetchData(data);
         });
     } else {
-      fetch(`/api/mod/tracklist?term=${data_val}`).then((response) => {
-        console.log(response.json());
-      });
+      fetch(`/api/mod/tracklist?term=${data_val}`)
+        .then((response) => {
+          if (response.ok) {
+            return response.json();
+          }
+        })
+        .then((data) => {
+          set_fetchData(data);
+        });
     }
     return () => {
       console.log("dataReturn");
     };
-  }, []);
+  }, [data_val]);
   return (
     <div>
       <Form id="type_request">
@@ -86,7 +93,14 @@ export default function DataForm() {
         </fieldset>
       </Form>
       <div className="Data">
-        <pre>{`${JSON.stringify(fetch_data, null, 2)}`}</pre>
+        {fetch_data.map((res) => (
+          <Track
+            song={res.song}
+            artist={res.artist}
+            popularity={res.popularity}
+          />
+        ))}
+        ;
       </div>
     </div>
   );
