@@ -3,12 +3,14 @@ import { Form } from "react-router-dom";
 import { useState, useEffect } from "react";
 export default function DataForm() {
   const [data_val, set_dataVal] = useState();
-
   useEffect(() => {
     if (!data_val) {
       set_dataVal("long_term");
+      fetch(`/api/mod/tracklist?term=${data_val}`).then((response) => {
+        console.log(response.json());
+      });
+    } else {
     }
-    console.log("dataGotten:", data_val);
     return () => {
       console.log("dataReturn");
     };
