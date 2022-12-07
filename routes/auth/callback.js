@@ -6,8 +6,8 @@ const session = require("express-session");
 
 router.get("/", (req, res) => {
   const code = req.query.code || null;
-  //const REDIRECT_URI = 'http://localhost:5000/api/callback'
-  const REDIRECT_URI = "https://umd-spotify-analytics.herokuapp.com/api/callback";
+  const REDIRECT_URI = 'http://localhost:5000/api/callback'
+  //const REDIRECT_URI = "https://umd-spotify-analytics.herokuapp.com/api/callback";
   const CLIENT_ID = "530e835e3d6b45b5b6e339554a506d43";
   const CLIENT_SECRET = "49667a6fcfbf4533839c5016cfed4b7a";
   axios({
@@ -35,10 +35,10 @@ router.get("/", (req, res) => {
         //console.log(req.session);
         //res.send(`<pre>${JSON.stringify(response.data, null, 2)}</pre>`);
         //res.send(response);
-        res.redirect(
-          `https://umd-spotify-analytics.herokuapp.com/`
-        );
-        //res.status(200).send('Successfully logged in')
+        // res.redirect(
+        //   `https://umd-spotify-analytics.herokuapp.com/`
+        // );
+        res.status(200).send('Successfully logged in')
       } else {
         res.send(response);
       }

@@ -13,16 +13,16 @@ const pull_artist = (response_data) => {
   Receives full top 50 tracks object and returns TOP 50: Song_Name, Artist, Popularity 
 */
 const create_tracklist = (response_data) => {
-  const track_list = [];
-  response_data["items"].forEach((cur_track) => {
-    let { name, popularity, artists } = cur_track;
-    track_list.push({
+  const track_list = response_data["items"].map((cur_track) => {
+    let { name, popularity, artists, album, external_urls } = cur_track;
+    return {
       song_name: name,
       popularity: popularity,
       artists: pull_artist(artists),
-    });
+      image: album.images[0].url,
+      link: external_urls.spotify
+    };
   });
   return track_list;
 };
-
 module.exports = { create_tracklist };

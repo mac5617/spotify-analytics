@@ -9,9 +9,6 @@ const CLIENT_SECRET = "49667a6fcfbf4533839c5016cfed4b7a";
 router.use("/", function (req, res, next) {
     console.log('Reached MiddleWare')
     const { refresh_token, exp_time } = req.session.state;
-    console.log(Date.now() > exp_time)
-    console.log('Now', Date.now())
-    console.log('After', exp_time)
     if (Date.now() > exp_time) {
         console.log('Passing to next')
         req.access_token = req.session.state.access_token

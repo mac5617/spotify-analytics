@@ -17,6 +17,7 @@ const cors = require("cors");
 const mod_authorlistRouter = require("./routes/mod/artistList");
 const mod_genreslistRouter = require("./routes/mod/c_genreslist");
 const mod_tracklistRouter = require("./routes/mod/c_tracklist");
+const mod_trackPageRouter = require("./routes/mod/track_page");
 // Auth Routes
 const loginRouter = require("./routes/auth/login");
 const callbackRouter = require("./routes/auth/callback");
@@ -95,6 +96,7 @@ app.use("/api/test", testRouter);
 app.use("/api/mod/authorlist", mod_authorlistRouter);
 app.use("/api/mod/genreslist", mod_genreslistRouter);
 app.use("/api/mod/tracklist", mod_tracklistRouter);
+app.use("/api/mod/trackpage", mod_trackPageRouter);
 // Albums
 app.use("/api/album/single", album_singleRouter);
 app.use("/api/album/multi", album_multiRouter);
