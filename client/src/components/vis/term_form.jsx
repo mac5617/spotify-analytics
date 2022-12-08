@@ -3,36 +3,19 @@ import { Form } from "react-router-dom";
 import { useState, useEffect } from "react";
 import Track from "./track";
 export default function DataForm() {
-  const [data_val, set_dataVal] = useState();
-  const [fetch_data, set_fetchData] = useState();
-  const [data_load, set_dataLoad] = useState();
+  const [term, set_term] = useState("long_term");
+  const [trackData, set_trackData] = useState();
   useEffect(() => {
-    if (!data_val) {
-      set_dataVal("long_term");
-      fetch(`/api/mod/tracklist?term=${"long_term"}`)
-        .then((response) => {
-          if (response.ok) {
-            return response.json();
-          }
-        })
-        .then((data) => {
-          set_fetchData(data);
-        });
-    } else {
-      fetch(`/api/mod/tracklist?term=${data_val}`)
-        .then((response) => {
-          if (response.ok) {
-            return response.json();
-          }
-        })
-        .then((data) => {
-          set_fetchData(data);
-        });
-    }
-    return () => {
-      console.log("dataReturn");
+    const fetchData = async () => {
+      const data = await fetch(`/api/mod/trackpage?term=${term}`);
+      const json = await data.json();
+      set_trackData(json);
     };
-  }, [data_val]);
+
+    fetchData();
+    console.log(trackData);
+    // eslint-disable-next-line
+  }, [term]);
   return (
     <div>
       <Form id="type_request">
@@ -44,14 +27,13 @@ export default function DataForm() {
             value="long_term"
             name="term"
             onClick={(item) => {
-              set_dataVal(item.target.value);
+              set_term(item.target.value);
             }}
-            checked
           />
           <label
             title="All Time top songs"
-            for="long"
-            className={`${data_val === "long_term" ? "bolder" : ""}`}
+            htmlFor="long"
+            className={`${term === "long_term" ? "bolder" : ""}`}
           >
             long term
           </label>
@@ -63,13 +45,13 @@ export default function DataForm() {
             value="medium_term"
             name="term"
             onClick={(item) => {
-              set_dataVal(item.target.value);
+              set_term(item.target.value);
             }}
           />
           <label
             title="top songs in last 6 months"
-            for="medium"
-            className={`${data_val === "medium_term" ? "bolder" : ""}`}
+            htmlFor="medium"
+            className={`${term === "medium_term" ? "bolder" : ""}`}
           >
             medium term
           </label>
@@ -80,25 +62,29 @@ export default function DataForm() {
             value="short_term"
             name="term"
             onClick={(item) => {
-              set_dataVal(item.target.value);
+              set_term(item.target.value);
             }}
           />
 
           <label
             title="top songs in last 4 weeks"
-            for="short"
-            className={`${data_val === "short_term" ? "bolder" : ""}`}
+            htmlFor="short"
+            className={`${term === "short_term" ? "bolder" : ""}`}
           >
             Short term
           </label>
         </fieldset>
       </Form>
       <div className="Data">
-        {fetch_data?.map((res) => (
+        {trackData?.map((res, index) => (
           <Track
+            key={`${index}:${res.song_name}`}
+            className="trackContainer"
             song={res.song_name}
-            artist={res.artists.toString()}
+            artist={res.artists.join(', ')}
             popularity={res.popularity}
+            image={res.image}
+            link={res.link}
           />
         ))}
         ;

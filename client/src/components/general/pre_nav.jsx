@@ -1,10 +1,10 @@
 // eslint-disable-next-line
 import logo from "./spot_icon.png";
-import "../../style/pre_nav.css";
+import "../../style/nav.css";
 export default function PreNav() {
   return (
     <nav>
-      <ul className="container">
+      <ul className="prenav_container">
         <div className="lDiv">
           <li>{/* <img src={logo} alt="" id="logo" /> */}</li>
           <li>

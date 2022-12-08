@@ -1,0 +1,25 @@
+.Data{
+    padding-left: 10px;
+}
+.Track > a > img{
+ height: 50px;
+ width: 50px;
+}
+.Track > a{
+    padding-bottom: 10px;
+    display: flex;
+}
+.Data > .Track > a > *{
+    padding-right: 10px;
+}
+.song_art{
+    display: flex;
+    flex-direction: column;
+}
+.Data > .Track > a > .song{
+    font-weight: none;
+}
+.artist{
+    color: gray;
+
+}

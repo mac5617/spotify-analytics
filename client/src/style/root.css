@@ -51,6 +51,13 @@ a {
   color: white;
   text-decoration: none;
 }
+.trackContainer{
+  display: flex;
+}
 .track {
   color: white;
 }
+.track > img{
+  height: 50px;
+  width: 50px;
+ }

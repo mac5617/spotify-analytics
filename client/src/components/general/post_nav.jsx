@@ -1,11 +1,11 @@
 // eslint-disable-next-line
 import logo from "./spot_icon.png";
-import "../../style/pre_nav.css";
+import "../../style/nav.css";
 // import { Outlet, Link } from "react-router-dom";
 export default function PostNav() {
   return (
     <nav>
-      <ul className="container">
+      <ul>
         <div className="lDiv">
           <li>{/* <img src={logo} alt="" id="logo" /> */}</li>
           <li>

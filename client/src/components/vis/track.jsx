@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-
+import "../../style/track.css";
 export default class track extends Component {
   constructor(props) {
     super(props);
@@ -7,18 +7,25 @@ export default class track extends Component {
       song: props.song,
       artist: props.artist,
       popularity: props.popularity,
+      image: props.image,
+      link: props.link,
     };
   }
 
   render() {
     return (
       <div className="Track">
-        <span>Song: {this.state.song}</span>
-        <br />
-        <span>Artist: {this.state.artist}</span>
-        <br />
-        <span>Popularity: {this.state.popularity}</span>
-        <br />
+        <a href={`${this.state.link}`}>
+          <img
+            src={`${this.state.image}`}
+            alt={`${this.state.song} cover`}
+          ></img>
+          <div className="song_art">
+            <span className="song">{this.state.song}</span>
+            <span className="artist">{this.state.artist}</span>
+          </div>
+          {/* <span className="popularity">{this.state.popularity}</span> */}
+        </a>
       </div>
     );
   }
