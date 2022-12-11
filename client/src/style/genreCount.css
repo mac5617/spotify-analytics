@@ -1,7 +1,10 @@
-input {
+.term {
   position: fixed;
   opacity: 0;
   pointer-events: none;
+}
+.inputSearch{
+  border: 20px;
 }
 label {
   color: white;

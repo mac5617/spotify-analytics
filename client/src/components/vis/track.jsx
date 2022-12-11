@@ -15,7 +15,7 @@ export default class track extends Component {
   render() {
     return (
       <div className="Track">
-        <a href={`${this.state.link}`}>
+        <a href={`${this.state.link}` } target="_blank" rel="noreferrer">
           <img
             src={`${this.state.image}`}
             alt={`${this.state.song} cover`}

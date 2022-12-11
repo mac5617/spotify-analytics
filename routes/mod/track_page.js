@@ -2,73 +2,60 @@ var express = require("express");
 var router = express.Router();
 const axios = require("axios");
 const util = require("../../utilities/pull_tracks.js");
+const uti = require("../../utilities/pull_author_id");
 const retObj = {};
 /* GET users 50 songs. */
-router.get("/", async function (req, res, next) {
+router.get("/", function (req, res, next) {
   // short_term, medium-term, long-term
   const { term } = req.query;
   const access_token = req.access_token;
-  try {
-    const trackData = await axios({
-      method: "get",
-      url: "https://api.spotify.com/v1/me/top/tracks",
-      params: { limit: 50, offset: 0, time_range: term },
-      headers: {
-        Authorization: `Bearer ${access_token}`,
-        "Content-Type": "application/json",
-      },
-    })
-    console.log(trackData.data)
-    res.send(util.create_tracklist(trackData.data))
-    // pull track ids - Pass in trackData
-    // request tracks
-    // pull return data - pass in trackData and track data
-
-
-
-
-
-      // .then((response) => {
-      //   let artist_info = util.pull_artistIDArray(response.data);
-      //   res.send(artist_info);
-      // })
-      // .catch((error) => {
-      //   res.send(error);
-      // });
-  } catch (e) {
-    res.status(e.status || 500);
-    res.render("error");
-  }
+  const getTracks = async () => {
+    try {
+      const trackData = await axios({
+        method: "get",
+        url: "https://api.spotify.com/v1/me/top/tracks",
+        params: { limit: 50, offset: 0, time_range: term },
+        headers: {
+          Authorization: `Bearer ${access_token}`,
+          "Content-Type": "application/json",
+        },
+      });
+      return await trackData.data;
+    } catch (e) {
+      res.status(e.status || 500);
+      res.render("error");
+    }
+  };
+  const getAuthors = async (idList) => {
+    try {
+      const artlist = await axios({
+        method: "get",
+        url: `https://api.spotify.com/v1/artists`,
+        params: { ids: idList },
+        headers: {
+          Authorization: `Bearer ${access_token}`,
+          "Content-Type": "application/json",
+        },
+      });
+      return await artlist.data;
+    } catch (e) {
+      console.log(e)
+    }
+  };
+  const main = async () => {
+    const myData = await getTracks();
+    console.log("Data Pull");
+    console.log(myData);
+    const artString = uti.pull_artistIDArray(myData);
+    console.log("ArtString");
+    const authorInfo1 = await getAuthors(artString[0].toString());
+    const authorInfo2 = await getAuthors(artString[1].toString());
+    const authorFinal = authorInfo1['artists'].concat(authorInfo2['artists'])
+    console.log("authorInfo");
+    const final = util.create_tracklist(myData, authorFinal);
+    res.send(final);
+  };
+  main()
 });
 
 module.exports = router;
-
-/*
-{
-{
-    song_name:name, - Top user tracks
-    artist_name:[artist1,artist2,artist3], - Top user tracks
-    song_picture: link, - song lookup
-    popularity:score, - Top user tracks
-},
-{
-    song_name:name,
-    artist_name:[artist1,artist2,artist3],
-    song_picture: link,
-    popularity:score,
-},
-{
-    song_name:name,
-    artist_name:[artist1,artist2,artist3],
-    song_picture: link,
-    popularity:score,
-}
-
-
-
-}
-
-
-
-
-*/

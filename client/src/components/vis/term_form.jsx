@@ -2,18 +2,73 @@ import React from "react";
 import { Form } from "react-router-dom";
 import { useState, useEffect } from "react";
 import Track from "./track";
+import BarChart from "./BarChart";
 export default function DataForm() {
   const [term, set_term] = useState("long_term");
   const [trackData, set_trackData] = useState();
+  const [inputValue, set_inputValue] = useState();
+  const [ChartData, set_chartData] = useState({
+    labels: ["a", "b", "c", "d"],
+    datasets: [
+      {
+        label: "Users Gained",
+        data: [1, 2, 3, 4],
+        backgroundColor: [
+          "rgba(75,192,192,1)",
+          "#ecf0f1",
+          "#50AF95",
+          "#f3ba2f",
+          "#2a71d0",
+        ],
+        borderColor: "black",
+        borderWidth: 2,
+      },
+    ],
+  });
   useEffect(() => {
     const fetchData = async () => {
+      set_trackData([]);
       const data = await fetch(`/api/mod/trackpage?term=${term}`);
       const json = await data.json();
       set_trackData(json);
     };
-
     fetchData();
-    console.log(trackData);
+    const genreLookup = {};
+    trackData?.forEach((element) => {
+      const { genre } = element;
+      if (genre) {
+        genre.forEach((item) => {
+          if (item in genreLookup) {
+            genreLookup[item] += 1;
+          } else {
+            genreLookup[item] = 1;
+          }
+        });
+      }
+    });
+
+    const sortable = Object.entries(genreLookup)
+      .sort(([, a], [, b]) => b - a)
+      .reduce((r, [k, v]) => ({ ...r, [k]: v }), {});
+
+    set_chartData({
+      labels: Object.keys(sortable),
+      datasets: [
+        {
+          label: "Number of songs under genre",
+          data: Object.values(sortable),
+          backgroundColor: [
+            "rgba(75,192,192,1)",
+            "#ecf0f1",
+            "#50AF95",
+            "#f3ba2f",
+            "#2a71d0",
+          ],
+          borderColor: "black",
+          borderWidth: 2,
+        },
+      ],
+    });
     // eslint-disable-next-line
   }, [term]);
   return (
@@ -21,6 +76,7 @@ export default function DataForm() {
       <Form id="type_request">
         <fieldset>
           <input
+            className="term"
             title="All Time top songs"
             type="radio"
             id="long"
@@ -39,6 +95,7 @@ export default function DataForm() {
           </label>
 
           <input
+            className="term"
             title="top songs in last 6 months"
             type="radio"
             id="medium"
@@ -56,6 +113,7 @@ export default function DataForm() {
             medium term
           </label>
           <input
+            className="term"
             title="top songs in last 4 weeks"
             type="radio"
             id="short"
@@ -75,20 +133,21 @@ export default function DataForm() {
           </label>
         </fieldset>
       </Form>
+      {/* <input type="text" className="inputSearch"/> */}
       <div className="Data">
         {trackData?.map((res, index) => (
           <Track
             key={`${index}:${res.song_name}`}
             className="trackContainer"
             song={res.song_name}
-            artist={res.artists.join(', ')}
+            artist={res.artists.join(", ")}
             popularity={res.popularity}
             image={res.image}
             link={res.link}
           />
         ))}
-        ;
       </div>
+      <BarChart chartData={ChartData} />
     </div>
   );
 }
