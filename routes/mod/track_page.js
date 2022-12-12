@@ -44,14 +44,10 @@ router.get("/", function (req, res, next) {
   };
   const main = async () => {
     const myData = await getTracks();
-    console.log("Data Pull");
-    console.log(myData);
     const artString = uti.pull_artistIDArray(myData);
-    console.log("ArtString");
     const authorInfo1 = await getAuthors(artString[0].toString());
     const authorInfo2 = await getAuthors(artString[1].toString());
     const authorFinal = authorInfo1['artists'].concat(authorInfo2['artists'])
-    console.log("authorInfo");
     const final = util.create_tracklist(myData, authorFinal);
     res.send(final);
   };

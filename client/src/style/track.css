@@ -23,3 +23,32 @@
     color: gray;
 
 }
+.Data{
+    padding-left: 10px;
+}
+.Playlist > a > img{
+ height: 50px;
+ width: 50px;
+}
+.Playlist > a{
+    padding-bottom: 10px;
+    display: flex;
+}
+.Data > .Playlist > a > *{
+    padding-right: 10px;
+}
+.playlist_art{
+    display: flex;
+    flex-direction: column;
+}
+.Data > .Playlist > a > .song{
+    font-weight: none;
+}
+.artist{
+    color: gray;
+}
+.inputBox{
+    display: flex;
+    flex-direction: column;
+    max-width: 200px;
+}

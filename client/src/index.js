@@ -9,6 +9,7 @@ import {
 import "./index.css";
 import Root from "./routes/root";
 import GenreCount from "./routes/vis/genreCount";
+import PlaylistCount from "./routes/vis/playlistCount"
 const router = createBrowserRouter([
   {
     path: "/",
@@ -17,6 +18,10 @@ const router = createBrowserRouter([
   {
     path: "/vis/genreCount",
     element: <GenreCount />,
+  },
+  {
+    path: "/vis/playlistCount",
+    element: <PlaylistCount/>,
   },
 ]);
 
