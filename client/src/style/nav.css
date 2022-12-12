@@ -18,7 +18,7 @@ li {
 }
 #logo {
   width: fit-content;
-  height: 60px;
+  height: fit-content;
   padding-right: 10px;
 }
 .rDiv {

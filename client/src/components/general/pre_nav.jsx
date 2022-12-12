@@ -18,7 +18,7 @@ export default function PreNav() {
             </a>
           </li>
           <li>
-            <a href="https://github.com/mac5617/spotify-analytics">Github</a>
+            <a href="https://github.com/mac5617/spotify-analytics" target="_blank" rel="noopener noreferrer">Github</a>
           </li>
           <li>
             <a href="/about">About Us</a>

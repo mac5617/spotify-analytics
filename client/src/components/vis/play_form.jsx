@@ -5,11 +5,12 @@ import BarChart from "./BarChart";
 
 export default function DataForm() {
   const [playData, set_playData] = useState(null);
+  const [filteredData, set_filteredData] = useState(null);
   const [inputValue, set_inputValue] = useState("");
   const [ChartData, set_chartData] = useState(null);
   function filterList(list, filterInputValue) {
-    console.log('Thedata')
-    console.log(list)
+    console.log("Thedata");
+    console.log(list);
     return list.filter((item) => {
       const lowerCaseName = item.toLowerCase();
       const lowerCaseQuery = filterInputValue.toLowerCase();
@@ -18,22 +19,23 @@ export default function DataForm() {
   }
   const inputLog = (event) => {
     set_inputValue(event.target.value);
-    console.log(playData)
+    console.log(playData);
     if (playData) {
       const data_filter = filterList(
         playData.map((item) => item.name),
         inputValue
       );
-      console.log('Data Filter')
-      console.log(data_filter)
-      let temp_data = []
+      console.log("Data Filter");
+      console.log(data_filter);
+      let temp_data = [];
       playData.forEach((item) => {
         if (data_filter.includes(item.name)) {
-          temp_data.push(item)
+          temp_data.push(item);
         }
       });
       console.log(inputValue);
-      console.log(temp_data)
+      console.log(temp_data);
+      set_filteredData(temp_data);
       set_chartData({
         labels: temp_data.map((item) => {
           return item.name;
@@ -98,9 +100,7 @@ export default function DataForm() {
 
     // eslint-disable-next-line
   }, []);
-  useEffect(() => {
-    
-  }, []);
+  useEffect(() => {}, []);
 
   return (
     <div>
@@ -109,20 +109,35 @@ export default function DataForm() {
         <input type="text" className="inputSearch" onChange={inputLog} />
       </div>
       <div className="Data">
-        {playData?.map((res, index) => (
-          <Playlist
-            key={`${index}:${res.name}`}
-            className="playContainer"
-            playlist={res.name}
-            artist={res.artists
-              .map((item) => {
-                return item.name;
-              })
-              .join(", ")}
-            image={res.images[0].url}
-            link={res.external_urls.spotify}
-          />
-        ))}
+        {filteredData
+          ? filteredData?.map((res, index) => (
+              <Playlist
+                key={`${index}:${res.name}`}
+                className="playContainer"
+                playlist={res.name}
+                artist={res.artists
+                  .map((item) => {
+                    return item.name;
+                  })
+                  .join(", ")}
+                image={res.images[0].url}
+                link={res.external_urls.spotify}
+              />
+            ))
+          : playData?.map((res, index) => (
+              <Playlist
+                key={`${index}:${res.name}`}
+                className="playContainer"
+                playlist={res.name}
+                artist={res.artists
+                  .map((item) => {
+                    return item.name;
+                  })
+                  .join(", ")}
+                image={res.images[0].url}
+                link={res.external_urls.spotify}
+              />
+            ))}
       </div>
       {ChartData ? (
         <BarChart chartData={ChartData} />

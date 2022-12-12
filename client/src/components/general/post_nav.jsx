@@ -14,13 +14,19 @@ export default function PostNav() {
         </div>
         <div className="rDiv">
           <li>
-            <a href="/graphs">Graphs</a>
+            <a href="/vis">Visualizations</a>
           </li>
           <li>
-            <a href="/maps">Maps</a>
+            <a
+              href="https://github.com/mac5617/spotify-analytics"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Github
+            </a>
           </li>
           <li>
-            <a href="/me">Profile</a>
+            <a href="/about">About us</a>
           </li>
         </div>
       </ul>

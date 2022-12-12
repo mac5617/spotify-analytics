@@ -10,10 +10,20 @@ import "./index.css";
 import Root from "./routes/root";
 import GenreCount from "./routes/vis/genreCount";
 import PlaylistCount from "./routes/vis/playlistCount"
+import Vis from "./components/general/vis.jsx"
+import About from "./components/general/about.jsx"
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Root />,
+  },
+  {
+    path: "/vis",
+    element: <Vis />,
+  },
+  {
+    path: "/about",
+    element: <About />,
   },
   {
     path: "/vis/genreCount",

@@ -1,0 +1,17 @@
+.vis_root {
+  color: white;
+}
+.inner_vis > a {
+  display: flex;    
+  justify-content: center;
+  align-items: center;
+  margin: 30px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background-color: #a46936;
+}
+.inner_vis > a > span {
+  display: flex;
+  margin-right: 100px;
+  padding: 30px;
+}
