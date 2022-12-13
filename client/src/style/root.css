@@ -76,7 +76,7 @@ a {
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  height: 200px;
+  max-height: 200px;
 }
 .left_root > span {
   margin: 50px;
@@ -89,7 +89,7 @@ a {
 .right_root {
   flex-grow: 1;
   width: 100%;
-  height: 400px;
+  max-height: 400px;
 }
 .foot {
   display: flex;

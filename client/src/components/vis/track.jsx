@@ -6,7 +6,7 @@ export default class track extends Component {
     this.state = {
       song: props.song,
       artist: props.artist,
-      popularity: props.popularity,
+      genre: props.genre,
       image: props.image,
       link: props.link,
     };
@@ -14,8 +14,8 @@ export default class track extends Component {
 
   render() {
     return (
-      <div className="Track">
-        <a href={`${this.state.link}` } target="_blank" rel="noreferrer">
+      <div className="Track" title={`${this.state.genre}`}>
+        <a href={`${this.state.link}`} target="_blank" rel="noreferrer">
           <img
             src={`${this.state.image}`}
             alt={`${this.state.song} cover`}
@@ -24,7 +24,6 @@ export default class track extends Component {
             <span className="song">{this.state.song}</span>
             <span className="artist">{this.state.artist}</span>
           </div>
-          {/* <span className="popularity">{this.state.popularity}</span> */}
         </a>
       </div>
     );
