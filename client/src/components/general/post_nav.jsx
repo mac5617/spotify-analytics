@@ -26,7 +26,7 @@ export default function PostNav() {
             </a>
           </li>
           <li>
-            <a href="/about">About us</a>
+            {/* <a href="/about">About us</a> */}
           </li>
         </div>
       </ul>
